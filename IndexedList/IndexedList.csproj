@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Kevin Jin</Authors>
+    <Company>MagicEastern Studio</Company>
+    <PackageId>MagicEastern.IndexedList</PackageId>
+    <PackageTags>Index List</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Product>MagicEastern.IndexedList</Product>
+  </PropertyGroup>
+
+</Project>
