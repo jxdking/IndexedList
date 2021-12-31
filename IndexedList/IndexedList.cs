@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace IndexedList
+namespace MagicEastern.IndexedList
 {
     /// <summary>
     /// The data structure is not thread safe. Concurrency should be managed by user.

@@ -1,4 +1,4 @@
-﻿using IndexedList;
+﻿using MagicEastern.IndexedList;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

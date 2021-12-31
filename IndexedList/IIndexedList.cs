@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace IndexedList
+namespace MagicEastern.IndexedList
 {
     public interface IIndexedList<T>
     {

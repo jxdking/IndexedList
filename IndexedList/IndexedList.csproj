@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -9,6 +9,13 @@
     <PackageTags>Index List</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Product>MagicEastern.IndexedList</Product>
+    <Description>A mutable indexed list structure, for quick look up operation.</Description>
+    <RootNamespace>MagicEastern.IndexedList</RootNamespace>
+    <Version>1.0.2</Version>
+    <RepositoryUrl>https://github.com/jxdking/IndexedList</RepositoryUrl>
+    <RepositoryType />
+    <PackageProjectUrl>https://github.com/jxdking/IndexedList</PackageProjectUrl>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
   </PropertyGroup>
 
 </Project>
