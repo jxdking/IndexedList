@@ -17,12 +17,12 @@ namespace MagicEastern.IndexedList
         {
             public string Name;
             public Func<T, object> IndexBy;
-            private Dictionary<object, List<T>> Mapping;
+            private Dictionary<Tuple<object>, List<T>> Mapping;
             public Index(string name, Func<T, object> indexBy, IEnumerable<T> data)
             {
                 Name = name;
                 IndexBy = indexBy;
-                Mapping = data.ToLookup(indexBy).ToDictionary(i => i.Key, i => i.ToList());
+                Mapping = data.ToLookup(indexBy).ToDictionary(i => new Tuple<object>(i.Key), i => i.ToList());
             }
 
             /// <summary>
@@ -31,7 +31,7 @@ namespace MagicEastern.IndexedList
             /// <param name="obj"></param>
             public void Add(T obj)
             {
-                var val = IndexBy(obj);
+                var val = new Tuple<object>(IndexBy(obj));
                 if (Mapping.TryGetValue(val, out List<T> lst))
                 {
                     lst.Add(obj);
@@ -48,7 +48,7 @@ namespace MagicEastern.IndexedList
             /// <param name="obj"></param>
             public void Remove(T obj)
             {
-                var val = IndexBy(obj);
+                var val = new Tuple<object>(IndexBy(obj));
                 if (Mapping.TryGetValue(val, out List<T> lst))
                 {
                     lst.Remove(obj);
@@ -64,7 +64,7 @@ namespace MagicEastern.IndexedList
             {
                 get
                 {
-                    if (Mapping.TryGetValue(idxVal, out List<T> res)) { return res; }
+                    if (Mapping.TryGetValue(new Tuple<object>(idxVal), out List<T> res)) { return res; }
                     return new List<T>();
                 }
             }
