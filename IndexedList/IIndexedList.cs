@@ -6,16 +6,10 @@ namespace MagicEastern.IndexedList
 {
     public interface IIndexedList<T>
     {
-        List<T> List { get; set; }
-
-        
-        IndexedList<T> IndexBy<TIndexed>(string idxName, Func<T, TIndexed> func);
-        IndexedList<T> IndexBy<TProperty>(Expression<Func<T, TProperty>> expression);
-        IEnumerable<T> LookFor<TIndexed>(string idxName, TIndexed value);
-        IEnumerable<T> LookFor<TProperty>(Expression<Func<T, TProperty>> expression, object value);
+        IIndexedList<T> IndexBy<TProperty>(Expression<Func<T, TProperty>> expression);
+        List<T> LookFor<TIndexed>(string propertyName, TIndexed value);
         
         void Add(T item);
         bool Remove(T item);
-        void RefreshIndexes();
     }
 }
