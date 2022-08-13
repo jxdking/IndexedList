@@ -14,7 +14,7 @@ namespace MagicEastern.IndexedList
             return ret.IndexBy(expression);
         }
         
-        public static List<T> LookFor<T>(this IIndexedList<T> lst, object propertyValue)
+        public static HashSet<T> LookFor<T>(this IIndexedList<T> lst, object propertyValue)
         {
             var ps = propertyValue.GetType().GetProperties().ToList();
             if (ps.Count != 1)
@@ -27,7 +27,7 @@ namespace MagicEastern.IndexedList
             var method = typeof(IIndexedList<T>).GetMethod(nameof(IIndexedList<T>.LookFor));
             var generic = method.MakeGenericMethod(pi.PropertyType);
             var ret = generic.Invoke(lst, new object[] { pi.Name, val });
-            return (List<T>)ret;
+            return (HashSet<T>)ret;
         }
     }
 }

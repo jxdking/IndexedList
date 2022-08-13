@@ -17,12 +17,12 @@ namespace MagicEastern.IndexedList
         /// <summary>
         /// Wrap the key inside Tuple, because Dictionary does not like null keys.
         /// </summary>
-        private Dictionary<Tuple<TIndex>, List<T>> Mapping;
+        private Dictionary<Tuple<TIndex>, HashSet<T>> Mapping;
         
         public Index(Func<T, TIndex> indexBy, IEnumerable<T> data)
         {
             IndexBy = indexBy;
-            Mapping = data.ToLookup(indexBy).ToDictionary(i => new Tuple<TIndex>(i.Key), i => i.ToList());
+            Mapping = data.ToLookup(indexBy).ToDictionary(i => new Tuple<TIndex>(i.Key), i => new HashSet<T>(i));
         }
 
         /// <summary>
@@ -32,13 +32,13 @@ namespace MagicEastern.IndexedList
         public void Add(T obj)
         {
             var val = new Tuple<TIndex>(IndexBy(obj));
-            if (Mapping.TryGetValue(val, out List<T> lst))
+            if (Mapping.TryGetValue(val, out var lst))
             {
                 lst.Add(obj);
             }
             else
             {
-                Mapping[val] = new List<T> { obj };
+                Mapping[val] = new HashSet<T> { obj };
             }
         }
 
@@ -49,7 +49,7 @@ namespace MagicEastern.IndexedList
         public bool Remove(T obj)
         {
             var val = new Tuple<TIndex>(IndexBy(obj));
-            if (Mapping.TryGetValue(val, out List<T> lst))
+            if (Mapping.TryGetValue(val, out var lst))
             {
                 var ret = lst.Remove(obj);
                 if (lst.Count == 0)
@@ -75,13 +75,13 @@ namespace MagicEastern.IndexedList
             return GetEnumerator();
         }
 
-        // Get object by index value. If no match is found, return a List with 0 member.
-        public List<T> this[TIndex idxVal]
+        // Get object by index value. If no match is found, return a set with 0 member.
+        public HashSet<T> this[TIndex idxVal]
         {
             get
             {
-                if (Mapping.TryGetValue(new Tuple<TIndex>(idxVal), out List<T> res)) { return res; }
-                return new List<T>();
+                if (Mapping.TryGetValue(new Tuple<TIndex>(idxVal), out var res)) { return res; }
+                return new HashSet<T>();
             }
         }
     }

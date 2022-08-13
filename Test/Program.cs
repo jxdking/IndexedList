@@ -88,7 +88,7 @@ namespace Test
                 ct += d.Count();
             }
             sw.Stop();
-            Console.WriteLine("IndexedList2 lookup by index name " + ct + " records, costs " + sw.Elapsed.TotalMilliseconds + "ms");
+            Console.WriteLine("IndexedList2 lookup by anonymous object " + ct + " records, costs " + sw.Elapsed.TotalMilliseconds + "ms");
         }
     }
 

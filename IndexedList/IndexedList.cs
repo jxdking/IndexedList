@@ -57,7 +57,7 @@ namespace MagicEastern.IndexedList
             return this;
         }
 
-        public List<T> LookFor<TIndexed>(string propertyName, TIndexed value)
+        public HashSet<T> LookFor<TIndexed>(string propertyName, TIndexed value)
         {
             if (IdxList.TryGetValue(propertyName, out IIndex<T> val))
             {

@@ -7,7 +7,7 @@ namespace MagicEastern.IndexedList
     public interface IIndexedList<T>
     {
         IIndexedList<T> IndexBy<TProperty>(Expression<Func<T, TProperty>> expression);
-        List<T> LookFor<TIndexed>(string propertyName, TIndexed value);
+        HashSet<T> LookFor<TIndexed>(string propertyName, TIndexed value);
         
         void Add(T item);
         bool Remove(T item);
