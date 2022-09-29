@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace MagicEastern.IndexedList
 {
-    public interface IIndexedList<T>
+    public interface IIndexedList<T>: IEnumerable<T>
     {
         IIndexedList<T> IndexBy<TProperty>(Expression<Func<T, TProperty>> expression);
         HashSet<T> LookFor<TIndexed>(string propertyName, TIndexed value);
